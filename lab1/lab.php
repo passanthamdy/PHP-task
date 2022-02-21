@@ -8,11 +8,10 @@
 <body>  
 
 <?php
-// define variables and set to empty values
-$nameErr = $emailErr =  "";
 
-const NAME_MAX_LENGTH = 100;
-const MSG_MAX_LENGTH = 100;
+require_once 'conf.php';
+$nameErr = $emailErr = $messageErr= "";
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -49,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   }
   else {
-    if (empty($message)&& empty($nameErr)&& empty($emailErr)){
-      echo "Thank you $name , for contacting us ";
+    if (empty($messageErr)&& empty($nameErr)&& empty($emailErr)){
+      echo "Thank you $name, for contacting us ";
     }
   }
 
@@ -61,15 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Contact form</h2>
 <form method="post" action="lab.php">  
-  Name: <input type="text" name="name">
+  Name: <input value="<?php echo $_POST['name']  ?>" type="text" name="name">
   <br><br>
-  E-mail: <input type="text" name="email">
+  E-mail: <input  value="<?php echo $_POST['email']  ?>" type="text" name="email">
   
   <br><br>
-  Message: <textarea name="mesage" rows="5" cols="40"></textarea>
+  Message: <textarea value="<?php echo $_POST['message']  ?>" name="message" rows="5" cols="40"></textarea>
   
   <br><br>
-  <input type="submit" name="submit" value="Submit">  
+  <input  type="submit" name="submit" value="Submit">  
 </form>
 
 
