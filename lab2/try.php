@@ -7,6 +7,10 @@ if(file_exists("log.txt")){
     $userData= explode("\n", $imported_content);
 
     }
+session_start();
+$counter = isset($_SESSION['counter']) ? $_SESSION['counter'] : 0;
+$counter++;
+$_SESSION['counter'] = $counter;
 
 ?>
 
@@ -29,6 +33,7 @@ if(file_exists("log.txt")){
 </head>
 <body>
     <h1>User Data </h1>
+    <h1> <?php echo $counter; ?> </h1>
 <?php
   
         foreach ($userData as $usr) {
