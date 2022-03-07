@@ -28,8 +28,24 @@ $next_index = $index +_Pager_size_;
 $next_link = "http://localhost/day4/index.php?index=$next_index";
 $previous_index = (($index - _Pager_size_)>=0)?$index - _Pager_size_:0;
 $previous_link = "http://localhost/day4/index.php?index=$previous_index";
-
+$details_tb=Item::table("items");
+$result;
+if (isset($_GET['item'])&& is_numeric($_GET["item"])){
+  require_once("views/details.php"); 
+}else{
   require_once("views/table.php");
 
+}
+if(isset($_GET["search"])){
 
+require_once("views/detailsv2.php");
+}
 ?>
+<html>
+<form >
+  <label for="pId">ID:</label><br>
+  <input type="text" id="pId" name="pId" ><br>
+ 
+  <input type="submit" name="search" value="Search">
+</form> 
+</html>
